@@ -40,24 +40,24 @@ const StarsRandom = () => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="正集数量"
+          label="number of positive"
           name="numberOfPositive"
           rules={[
             {
               required: true,
-              message: "请输入正集数量",
+              message: "please input number of positive",
             },
           ]}
         >
           <InputNumber />
         </Form.Item>
         <Form.Item
-          label="几星模式"
+          label="stars mode"
           name="mode"
           rules={[
             {
               required: true,
-              message: "请输入几星模式",
+              message: "please input stars mode",
             },
           ]}
         >
@@ -69,7 +69,7 @@ const StarsRandom = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            生成数字
+            generate number
           </Button>
         </Form.Item>
       </Form>
@@ -77,9 +77,9 @@ const StarsRandom = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={positiveSet}
-            onCopy={() => message.info("复制成功")}
+            onCopy={() => message.info("copy successfully")}
           >
-            <Button type="primary">一键复制正集数字</Button>
+            <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{positiveSet}</div>
         </div>
@@ -88,9 +88,9 @@ const StarsRandom = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={antiset}
-            onCopy={() => message.info("复制成功")}
+            onCopy={() => message.info("copy successfully")}
           >
-            <Button type="primary">一键复制反集数字</Button>
+            <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{antiset}</div>
         </div>

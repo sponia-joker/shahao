@@ -35,12 +35,12 @@ const KillThreeNumber = () => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="杀1码数字"
+          label="kill one number"
           name="killNumberOne"
           rules={[
             {
               required: true,
-              message: "请输入杀1码数字",
+              message: "please inputkill one number",
             },
           ]}
         >
@@ -48,24 +48,24 @@ const KillThreeNumber = () => {
         </Form.Item>
 
         <Form.Item
-          label="杀2码数字"
+          label="kill two number"
           name="killNumberTwo"
           rules={[
             {
               required: true,
-              message: "请输入杀2码数字",
+              message: "please input kill two number",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="杀3码数字"
+          label="kill three number"
           name="killNumberThree"
           rules={[
             {
               required: true,
-              message: "请输入杀3码数字",
+              message: "please input kill three number",
             },
           ]}
         >
@@ -73,7 +73,7 @@ const KillThreeNumber = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            生成数字
+            generate number
           </Button>
         </Form.Item>
       </Form>
@@ -81,9 +81,9 @@ const KillThreeNumber = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={killThreeNumberResult}
-            onCopy={() => message.info('复制成功')}
+            onCopy={() => message.info('copy successfully')}
           >
-            <Button type="primary">一键复制码数字</Button>
+            <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{killThreeNumberResult}</div>
         </div>

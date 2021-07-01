@@ -35,16 +35,16 @@ const App = () => {
             <div className="logo"></div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
               <Menu.Item key="1" icon={<CommentOutlined />}>
-                <Link to="/">杀1码</Link>
+                <Link to="/">killOneNumber</Link>
               </Menu.Item>
               <Menu.Item key="2" icon={<UserOutlined />}>
-                <Link to="/kill-two-number">杀2码</Link>
+                <Link to="/kill-two-number">killTwoNumber</Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-                <Link to="/kill-three-number">杀3码</Link>
+                <Link to="/kill-three-number">KillThreeNumber</Link>
               </Menu.Item>
               <Menu.Item key="4" icon={<TransactionOutlined />}>
-                <Link to="/stars-random">几星随选</Link>
+                <Link to="/stars-random">randomStars</Link>
               </Menu.Item>
             </Menu>
           </Sider>

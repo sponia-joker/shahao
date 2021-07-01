@@ -34,12 +34,12 @@ const KillOneNumber = () => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="杀1码数字"
+          label="kill one number"
           name="killNumberOne"
           rules={[
             {
               required: true,
-              message: "请输入杀1码数字",
+              message: "please inputkill one number",
             },
           ]}
         >
@@ -48,7 +48,7 @@ const KillOneNumber = () => {
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            生成数字
+            generate number
           </Button>
         </Form.Item>
       </Form>
@@ -56,9 +56,9 @@ const KillOneNumber = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={killOneNumberResult}
-            onCopy={() => message.info('复制成功')}
+            onCopy={() => message.info('copy successfully')}
           >
-            <Button type="primary">一键复制码数字</Button>
+            <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{killOneNumberResult}</div>
         </div>
