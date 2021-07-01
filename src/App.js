@@ -7,11 +7,13 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   CommentOutlined,
+  TransactionOutlined
 } from "@ant-design/icons";
 
 import KillOneNumber from "./pages/KillOneNumber";
 import KillTwoNumber from "./pages/KillTwoNumber";
 import KillThreeNumber from "./pages/KillThreeNumber";
+import StarsRandom from "./pages/StarsRandom";
 import "./App.less";
 
 const { Header, Sider, Content } = Layout;
@@ -40,6 +42,9 @@ const App = () => {
               </Menu.Item>
               <Menu.Item key="3" icon={<VideoCameraOutlined />}>
                 <Link to="/kill-three-number">杀3码</Link>
+              </Menu.Item>
+              <Menu.Item key="4" icon={<TransactionOutlined />}>
+                <Link to="/stars-random">几星随选</Link>
               </Menu.Item>
             </Menu>
           </Sider>
@@ -72,6 +77,9 @@ const App = () => {
                 </Route>
                 <Route path="/kill-three-number" exact>
                   <KillThreeNumber></KillThreeNumber>
+                </Route>
+                <Route path="/stars-random" exact>
+                  <StarsRandom></StarsRandom>
                 </Route>
               </Switch>
             </Content>

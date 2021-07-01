@@ -29,7 +29,6 @@ const KillOneNumber = () => {
         name="killOneNumberForm"
         layout="inline"
         initialValues={{
-          remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
