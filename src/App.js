@@ -29,7 +29,7 @@ const App = () => {
             collapsible
             collapsed={collapsed}
             style={{
-              height: "100vh",
+              minHeight: "100vh",
             }}
           >
             <div className="logo"></div>

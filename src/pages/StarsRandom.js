@@ -12,14 +12,16 @@ const StarsRandom = () => {
     const maxNumber = mode === 1 ? 10 : mode === 2 ? 100 : 1000;
     const length = mode === 1 ? 1 : mode === 2 ? 2 : 3;
     const numberArray = generateArray(maxNumber, length);
-    const positiveSetArray = []
+    const positiveSetArray = [];
     for (let i = 0; i < numberOfPositive; i++) {
       var idx = parseInt(Math.random() * numberArray.length);
       positiveSetArray.push(numberArray[idx]);
       numberArray.splice(idx, 1);
     }
-    setPositiveSet(positiveSetArray.join(","));
-    setAntiset(numberArray.join(","));
+    setPositiveSet(
+      positiveSetArray.sort((a, b) => parseInt(a) - parseInt(b)).join(",")
+    );
+    setAntiset(numberArray.sort((a, b) => parseInt(a) - parseInt(b)).join(","));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -71,7 +73,7 @@ const StarsRandom = () => {
           </Button>
         </Form.Item>
       </Form>
-      {positiveSet.length>=1 && (
+      {positiveSet.length >= 1 && (
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={positiveSet}
@@ -82,7 +84,7 @@ const StarsRandom = () => {
           <div className="display">{positiveSet}</div>
         </div>
       )}
-      {antiset.length>=1 && (
+      {antiset.length >= 1 && (
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={antiset}
