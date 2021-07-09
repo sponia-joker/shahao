@@ -3,20 +3,18 @@ import { Form, Input, Button, message } from "antd";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { generateArray, isRepeat } from "../util";
 
-
 const KillTwoNumber = () => {
   // const [form] = Form.useForm();
   const [killTwoNumberResult, setKillTwoNumberResult] = useState();
   const onFinish = (values) => {
     const { killNumberOne, killNumberTwo } = values;
     const numberArray = generateArray(1000);
-    const killTwoNumberResult = numberArray.filter((number) => {
-      return (
+    const killTwoNumberResult = numberArray.filter(
+      (number) =>
         number.includes(killNumberOne) ||
         number.includes(killNumberTwo) ||
         isRepeat(number.toString())
-      );
-    });
+    );
     setKillTwoNumberResult(killTwoNumberResult.join(","));
   };
 
@@ -29,8 +27,7 @@ const KillTwoNumber = () => {
       <Form
         name="killTwoNumberForm"
         layout="inline"
-        initialValues={{
-        }}
+        initialValues={{}}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -69,7 +66,7 @@ const KillTwoNumber = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={killTwoNumberResult}
-            onCopy={() => message.info('copy successfully')}
+            onCopy={() => message.info("copy successfully")}
           >
             <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
