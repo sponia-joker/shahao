@@ -7,13 +7,15 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   CommentOutlined,
-  TransactionOutlined
+  TransactionOutlined,
+  FacebookOutlined,
 } from "@ant-design/icons";
 
 import KillOneNumber from "./pages/KillOneNumber";
 import KillTwoNumber from "./pages/KillTwoNumber";
 import KillThreeNumber from "./pages/KillThreeNumber";
 import StarsRandom from "./pages/StarsRandom";
+import LongTiger from "./pages/LongTiger";
 import "./App.less";
 
 const { Header, Sider, Content } = Layout;
@@ -45,6 +47,9 @@ const App = () => {
               </Menu.Item>
               <Menu.Item key="4" icon={<TransactionOutlined />}>
                 <Link to="/stars-random">randomStars</Link>
+              </Menu.Item>
+              <Menu.Item key="5" icon={<FacebookOutlined />}>
+                <Link to="/long-tiger">long-tiger</Link>
               </Menu.Item>
             </Menu>
           </Sider>
@@ -80,6 +85,9 @@ const App = () => {
                 </Route>
                 <Route path="/stars-random" exact>
                   <StarsRandom></StarsRandom>
+                </Route>
+                <Route path="/long-tiger" exact>
+                  <LongTiger></LongTiger>
                 </Route>
               </Switch>
             </Content>
