@@ -7,6 +7,7 @@ const StarsRandom = () => {
   // const [form] = Form.useForm();
   const [positiveSet, setPositiveSet] = useState([]);
   const [antiset, setAntiset] = useState([]);
+  const [isCreated, setIsCreated] = useState(false);
   const onFinish = (values) => {
     const { numberOfPositive, mode } = values;
     const maxNumber = mode === 1 ? 10 : mode === 2 ? 100 : 1000;
@@ -18,6 +19,7 @@ const StarsRandom = () => {
       positiveSetArray.push(numberArray[idx]);
       numberArray.splice(idx, 1);
     }
+    setIsCreated(true);
     setPositiveSet(
       positiveSetArray.sort((a, b) => parseInt(a) - parseInt(b)).join(",")
     );
@@ -26,6 +28,14 @@ const StarsRandom = () => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const onCopy = () => {
+    if (isCreated) {
+      message.info("copy successfully");
+    } else {
+      message.error("kill number is not synchronize with result ");
+    }
   };
 
   return (
@@ -38,6 +48,9 @@ const StarsRandom = () => {
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        onValuesChange={() => {
+          setIsCreated(false);
+        }}
       >
         <Form.Item
           label="number of positive"
@@ -75,10 +88,7 @@ const StarsRandom = () => {
       </Form>
       {positiveSet.length >= 1 && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard
-            text={positiveSet}
-            onCopy={() => message.info("copy successfully")}
-          >
+          <CopyToClipboard text={positiveSet} onCopy={onCopy}>
             <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{positiveSet}</div>
@@ -86,10 +96,7 @@ const StarsRandom = () => {
       )}
       {antiset.length >= 1 && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard
-            text={antiset}
-            onCopy={() => message.info("copy successfully")}
-          >
+          <CopyToClipboard text={antiset} onCopy={onCopy}>
             <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
           <div className="display">{antiset}</div>

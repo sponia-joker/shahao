@@ -5,6 +5,7 @@ import { generateArray, isRepeat } from "../util";
 
 const KillThreeNumber = () => {
   const [killThreeNumberResult, setKillThreeNumberResult] = useState();
+  const [isCreated, setIsCreated] = useState(false);
   const onFinish = (values) => {
     const { killNumberOne, killNumberTwo, killNumberThree } = values;
     const numberArray = generateArray(1000);
@@ -15,6 +16,7 @@ const KillThreeNumber = () => {
         number.includes(killNumberThree) ||
         isRepeat(number.toString())
     );
+    setIsCreated(true);
     setKillThreeNumberResult(killThreeNumberResult.join(","));
   };
 
@@ -30,6 +32,9 @@ const KillThreeNumber = () => {
         initialValues={{}}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        onValuesChange={() => {
+          setIsCreated(false);
+        }}
       >
         <Form.Item
           label="kill one number"
@@ -78,7 +83,13 @@ const KillThreeNumber = () => {
         <div style={{ marginTop: 20 }}>
           <CopyToClipboard
             text={killThreeNumberResult}
-            onCopy={() => message.info("copy successfully")}
+            onCopy={() => {
+              if (isCreated) {
+                message.info("copy successfully");
+              } else {
+                message.error("kill number is not synchronize with result ");
+              }
+            }}
           >
             <Button type="primary">one-click copy</Button>
           </CopyToClipboard>
