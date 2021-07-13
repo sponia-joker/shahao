@@ -88,17 +88,17 @@ const StarsRandom = () => {
       </Form>
       {positiveSet.length >= 1 && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard text={positiveSet} onCopy={onCopy}>
+          {/* <CopyToClipboard text={positiveSet} onCopy={onCopy}>
             <Button type="primary">one-click copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
           <div className="display">{positiveSet}</div>
         </div>
       )}
       {antiset.length >= 1 && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard text={antiset} onCopy={onCopy}>
+          {/* <CopyToClipboard text={antiset} onCopy={onCopy}>
             <Button type="primary">one-click copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
           <div className="display">{antiset}</div>
         </div>
       )}

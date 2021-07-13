@@ -81,7 +81,7 @@ const KillThreeNumber = () => {
       </Form>
       {killThreeNumberResult && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard
+          {/* <CopyToClipboard
             text={killThreeNumberResult}
             onCopy={() => {
               if (isCreated) {
@@ -92,7 +92,7 @@ const KillThreeNumber = () => {
             }}
           >
             <Button type="primary">one-click copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
           <div className="display">{killThreeNumberResult}</div>
         </div>
       )}

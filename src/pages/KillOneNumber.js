@@ -1,32 +1,45 @@
 import React, { useState } from "react";
-import { Form, Input, Button, message } from "antd";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Form, Input, message } from "antd";
 import { generateArray, isRepeat } from "../util";
 
 const KillOneNumber = () => {
-  // const [form] = Form.useForm();
   const [killOneNumberResult, setKillOneNumberResult] = useState();
-  const [isCreated, setIsCreated] = useState(false);
+
   const onFinish = (values) => {
     const { killNumberOne } = values;
-    const numberArray = generateArray(1000);
-    const killOneNumberResult = numberArray.filter(
-      (number) => number.includes(killNumberOne) || isRepeat(number.toString())
-    );
-    setIsCreated(true)
-    setKillOneNumberResult(killOneNumberResult.join(","));
+    if (killNumberOne) {
+      const numberArray = generateArray(1000);
+      const killOneNumberResult = numberArray.filter(
+        (number) =>
+          number.includes(killNumberOne) || isRepeat(number.toString())
+      );
+      setKillOneNumberResult(killOneNumberResult.join(","));
+      handCopy(killOneNumberResult.join(","));
+    } else {
+      setKillOneNumberResult("");
+      handCopy("\u0020"); //空格转义
+    }
+  };
+
+  const handCopy = (value) => {
+    if (document.execCommand("copy")) {
+      const input = document.createElement("input");
+      document.body.appendChild(input);
+      input.setAttribute("value", value);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+    } else {
+      message.error("The browser does not support automatic copying");
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const onCopy = () => {
-    if (isCreated) {
-      message.info("copy successfully");
-    } else {
-      message.error("kill number is not synchronize with result ");
-    }
+  const onValuesChange = (values) => {
+    onFinish(values);
   };
 
   return (
@@ -37,9 +50,7 @@ const KillOneNumber = () => {
         initialValues={{}}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        onValuesChange={()=>{
-          setIsCreated(false)
-        }}
+        onValuesChange={onValuesChange}
       >
         <Form.Item
           label="kill one number"
@@ -51,20 +62,20 @@ const KillOneNumber = () => {
             },
           ]}
         >
-          <Input/>
+          <Input />
         </Form.Item>
 
-        <Form.Item>
+        {/* <Form.Item>
           <Button type="primary" htmlType="submit">
             generate number
           </Button>
-        </Form.Item>
+        </Form.Item> */}
       </Form>
       {killOneNumberResult && (
         <div style={{ marginTop: 20 }}>
-          <CopyToClipboard text={killOneNumberResult} onCopy={onCopy}>
+          {/* <CopyToClipboard text={killOneNumberResult} onCopy={onCopy}>
             <Button type="primary">one-click copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
           <div className="display">{killOneNumberResult}</div>
         </div>
       )}
