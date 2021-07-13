@@ -34,12 +34,12 @@ const LongTiger = () => {
         <div className="display">{longText}</div>
       </div>
       <div style={{ marginTop: 20 }}>
-        {/* <CopyToClipboard
+        <CopyToClipboard
           text={tigerText}
           onCopy={() => message.info("copy successfully")}
         >
           <Button type="primary">one-click copy tiger dataset</Button>
-        </CopyToClipboard> */}
+        </CopyToClipboard>
         <div className="display">{tigerText}</div>
       </div>
     </>
